@@ -1,0 +1,43 @@
+@import "tailwindcss";
+:root {
+  background-color:aquamarine;
+  align-items: center;
+  justify-items: center;
+  background-image: url(Weather_image.jpg);
+}
+
+.weather-app {
+  box-sizing: border-box;
+  background-color: whitesmoke;
+  height: 30em;
+  width: 35em;
+  padding: 0.5em;
+  padding-left: 2em;
+  padding-right: 2em;
+  display: flex;
+  flex-direction: column;
+  border-radius: 1em;
+  row-gap: 1em;
+}
+
+.city-row {
+  display: flex;
+  column-gap: 1em;
+}
+
+.city-info {
+  text-align: start;
+  color: rgb(85, 85, 85);
+}
+
+.weather-card {
+  justify-items: start;
+  background-color: white;
+}
+
+.error {
+  color: red;
+  align-content: center;
+  justify-content: start;
+}
+
