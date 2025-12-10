@@ -3,7 +3,6 @@ import Loading_icon from '../Loading_icon.gif';
 const WeatherCard = ({temperature, setCityName, cityName, humidity, windSpeed, loading, error, icon, desc, setUnit}) => {
     const [city, setCity] = useState('');
     const [checked, setChecked] = useState(false);
-    console.log("checked is", checked);
     const handleChange = (e) => {
         setChecked(e.target.checked);
         if(!checked) {
