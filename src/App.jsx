@@ -8,8 +8,8 @@ const App = () => {
   const [temperature, setTemperature] = useState('');
   const [cityName, setCityName] = useState('');
   const [fetchCityName, setFetchCityName] = useState('');
-  const [humidity, setHumidity] = useState('');
-  const [windSpeed, setWindSpeed] = useState('');
+  const [humidity, setHumidity] = useState('--');
+  const [windSpeed, setWindSpeed] = useState('--');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   const [icon, setIcon] = useState('01d');
@@ -17,9 +17,16 @@ const App = () => {
   const [unit, setUnit] = useState("metric");
 
   const getWeatherData = async() => {
+    if (!cityName) {
+      return;
+    }
     try{
       setLoading(true);
       const response = await fetch(`${url}${cityName}&units=${unit}&appid=${key}`);
+      if (!response.ok) {
+        const errJson = await response.json().catch((e) => {});
+        throw new Error(errJson.message || 'Failed to fetch weather data');
+      }
       const data = await response.json();
       setTemperature(data.main.temp);
       setHumidity(data.main.humidity);
@@ -30,7 +37,6 @@ const App = () => {
       setDesc(data.weather[0].description);
       setError("");
     } catch(error) {
-      setLoading(true);
       setTemperature("");
       setHumidity("--");
       setWindSpeed("--");
