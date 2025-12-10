@@ -3,7 +3,7 @@
   background-color:aquamarine;
   align-items: center;
   justify-items: center;
-  background-image: url(Weather_image.jpg);
+  background-image: url("Weather_image.jpg");
 }
 
 .weather-app {
